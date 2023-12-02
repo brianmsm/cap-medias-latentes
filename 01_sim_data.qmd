@@ -1,0 +1,170 @@
+---
+title: "Simulación de datos para análisis"
+author: "Brian Norman Peña-Calero"
+date: "`r Sys.Date()`"
+format: 
+  html:
+    toc: true
+    number-sections: true
+    anchor-sections: true
+    code-line-numbers: true
+    code-overflow: scroll
+    code-copy: hover
+    code-link: true
+    code-fold: show
+    lang: es
+    embed-resources: true
+knitr:
+  opts_chunk: 
+    warning: false
+editor_options: 
+  chunk_output_type: console
+---
+
+# Carga de paquetes
+
+```{r}
+library(tidyverse)
+library(lavaan)
+```
+
+# Generación de datos
+
+## Grupo 1: Mujeres
+
+```{r}
+# Definir un modelo CFA para 3 factores con 5 ítems cada uno
+model_g1 <- '
+  # Definición de los factores
+  F1 =~ 0.7*y1 + 0.7*y2 + 0.7*y3 + 0.7*y4 + 0.7*y5
+  F2 =~ 0.8*y6 + 0.8*y7 + 0.8*y8 + 0.8*y9 + 0.8*y10
+  F3 =~ 0.75*y11 + 0.75*y12 + 0.75*y13 + 0.75*y14 + 0.75*y15
+
+  # Correlaciones entre factores
+  F1 ~~ 0.7*F2
+  F1 ~~ 0.6*F3
+  F2 ~~ 0.5*F3
+
+
+  # Especificar los umbrales para cada ítem
+  y1 | -2*t1 + -1*t2 + 1*t3 + 2*t4
+  y2 | -2*t1 + -1*t2 + 1*t3 + 2*t4
+  y3 | -2*t1 + -1*t2 + 1*t3 + 2*t4
+  y4 | -2*t1 + -1*t2 + 1*t3 + 2*t4
+  y5 | -2*t1 + -1*t2 + 1*t3 + 2*t4
+  y6 | -2*t1 + -1*t2 + 1*t3 + 2*t4
+  y7 | -2*t1 + -1*t2 + 1*t3 + 2*t4
+  y8 | -2*t1 + -1*t2 + 1*t3 + 2*t4
+  y9 | -2*t1 + -1*t2 + 1*t3 + 2*t4
+  y10 | -2*t1 + -1*t2 + 1*t3 + 2*t4
+  y11 | -2*t1 + -1*t2 + 1*t3 + 2*t4
+  y12 | -2*t1 + -1*t2 + 1*t3 + 2*t4
+  y13 | -2*t1 + -1*t2 + 1*t3 + 2*t4
+  y14 | -2*t1 + -1*t2 + 1*t3 + 2*t4
+  y15 | -2*t1 + -1*t2 + 1*t3 + 2*t4
+'
+
+# Simular los datos
+set.seed(123) # Para reproducibilidad
+simData_g1 <- simulateData(model_g1, 
+                           sample.nobs = 250,
+                           model.type = "cfa")
+```
+
+```{r}
+as_tibble(simData_g1)
+```
+
+## Grupo 2: Hombres
+
+```{r}
+# Definir un modelo CFA para 3 factores con 5 ítems cada uno
+model_g2 <- '
+  # Definición de los factores
+  F1 =~ 0.71*y1 + 0.71*y2 + 0.72*y3 + 0.71*y4 + 0.72*y5
+  F2 =~ 0.81*y6 + 0.81*y7 + 0.81*y8 + 0.81*y9 + 0.82*y10
+  F3 =~ 0.77*y11 + 0.77*y12 + 0.50*y13 + 0.78*y14 + 0.76*y15
+
+  # Correlaciones entre factores
+  F1 ~~ 0.7*F2
+  F1 ~~ 0.6*F3
+  F2 ~~ 0.5*F3
+
+
+  # Especificar los umbrales para cada ítem
+  y1 | -2*t1 + -1*t2 + 1*t3 + 2*t4
+  y2 | -2*t1 + -1*t2 + 1*t3 + 2*t4
+  y3 | -2*t1 + -1*t2 + 1*t3 + 2*t4
+  y4 | -2*t1 + -1*t2 + 1*t3 + 2*t4
+  y5 | -2*t1 + -1*t2 + 1*t3 + 2*t4
+  y6 | -2*t1 + -1*t2 + 1*t3 + 2*t4
+  y7 | -2*t1 + -1*t2 + 1*t3 + 2*t4
+  y8 | -2*t1 + -1*t2 + 1*t3 + 2*t4
+  y9 | -2*t1 + -1*t2 + 1*t3 + 2*t4
+  y10 | -2*t1 + -1*t2 + 1*t3 + 2*t4
+  y11 | -2*t1 + -1*t2 + 1*t3 + 2*t4
+  y12 | -2*t1 + -1*t2 + 1*t3 + 2*t4
+  y13 | -2*t1 + -1*t2 + 1*t3 + 2*t4
+  y14 | -2*t1 + -1*t2 + 1*t3 + 2*t4
+  y15 | -2*t1 + -1*t2 + 1*t3 + 2*t4
+'
+
+set.seed(123) # Para reproducibilidad
+simData_g2 <- simulateData(model_g2, 
+                           sample.nobs = 250,
+                           model.type = "cfa")
+```
+
+```{r}
+as_tibble(simData_g2)
+```
+
+## Unificar datos
+
+```{r}
+simData <- bind_rows(
+  simData_g1,
+  simData_g2,
+  .id = "Sex"
+) %>% 
+  mutate(
+    Sex = factor(Sex,
+                 labels = c("Mujer", "Varón"))
+  ) %>% 
+  as_tibble()
+
+simData
+```
+
+# Verificación
+
+```{r}
+model_cfa <- "F1 =~ y1 + y2 + y3 + y4 + y5
+              F2 =~ y6 + y7 + y8 + y9 + y10
+              F3 =~ y11 + y12 + y13 + y14 + y15"
+
+
+# Analizar el modelo con los datos simulados
+fit <- cfa(model_cfa,
+           data = simData,
+           ordered = TRUE,
+           estimator = "WLSMV")
+
+summary(fit, fit.measures = TRUE, standardized = TRUE)
+```
+
+```{r}
+#| dpi: 300
+lavaanPlot::lavaanPlot(fit, coefs = TRUE, 
+                       stand = TRUE,
+                       covs = TRUE,
+                       graph_options = list(rankdir = "LR"))
+```
+
+# Exportar datos
+
+```{r}
+#| eval: false
+write_csv(simData,
+          file = "01_data/processed/simData.csv")
+```
