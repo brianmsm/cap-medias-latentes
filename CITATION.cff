@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: "Si utiliza el código de este repositorio sea de forma parcial o total, por favor cítelo como se indica a continuación."
+authors:
+  - family-names: "Peña-Calero"
+    given-names: "Brian Norman"
+    orcid: "https://orcid.org/0000-0002-1073-9306"
+title: "Capítulo: Comparación de las Medias de los Factores Latentes tras Establecer la Invarianza Factorial"
+version: 1.0.0
+date-released: 2023-03-15
+url: "https://github.com/brianmsm/cap-medias-latentes"
