@@ -83,13 +83,12 @@ model_g2 <- '
   # Definición de los factores
   F1 =~ 0.71*y1 + 0.71*y2 + 0.72*y3 + 0.71*y4 + 0.72*y5
   F2 =~ 0.81*y6 + 0.81*y7 + 0.81*y8 + 0.81*y9 + 0.82*y10
-  F3 =~ 0.77*y11 + 0.77*y12 + 0.50*y13 + 0.78*y14 + 0.76*y15
+  F3 =~ 0.77*y11 + 0.79*y12 + 0.40*y13 + 0.81*y14 + 0.76*y15
 
   # Correlaciones entre factores
   F1 ~~ 0.7*F2
   F1 ~~ 0.6*F3
-  F2 ~~ 0.5*F3
-
+  F2 ~~ 0.75*F3
 
   # Especificar los umbrales para cada ítem
   y1 | -2*t1 + -1*t2 + 1*t3 + 2*t4
@@ -125,10 +124,10 @@ as_tibble(simData_g2)
 simData <- bind_rows(
   simData_g1,
   simData_g2,
-  .id = "Sex"
+  .id = "Sexo"
 ) %>% 
   mutate(
-    Sex = factor(Sex,
+    Sexo = factor(Sexo,
                  labels = c("Mujer", "Varón"))
   ) %>% 
   as_tibble()
