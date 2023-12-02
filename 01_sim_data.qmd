@@ -44,7 +44,11 @@ model_g1 <- '
   F1 ~~ 0.7*F2
   F1 ~~ 0.6*F3
   F2 ~~ 0.5*F3
-
+  
+  # Establecer las medias latentes
+  F1 ~ 0*1
+  F2 ~ 0*1
+  F3 ~ 0.1*1
 
   # Especificar los umbrales para cada ítem
   y1 | -2*t1 + -1*t2 + 1*t3 + 2*t4
@@ -89,7 +93,12 @@ model_g2 <- '
   F1 ~~ 0.7*F2
   F1 ~~ 0.6*F3
   F2 ~~ 0.75*F3
-
+  
+  # Establecer las medias latentes
+  F1 ~ 0.6*1
+  F2 ~ 0.3*1
+  F3 ~ 0.1*1
+  
   # Especificar los umbrales para cada ítem
   y1 | -2*t1 + -1*t2 + 1*t3 + 2*t4
   y2 | -2*t1 + -1*t2 + 1*t3 + 2*t4

@@ -4304,31 +4304,35 @@ lavaan is FREE software! Please report any bugs.</code></pre>
 <span id="cb5-9"><a href="#cb5-9"></a><span class="st">  F1 ~~ 0.7*F2</span></span>
 <span id="cb5-10"><a href="#cb5-10"></a><span class="st">  F1 ~~ 0.6*F3</span></span>
 <span id="cb5-11"><a href="#cb5-11"></a><span class="st">  F2 ~~ 0.5*F3</span></span>
-<span id="cb5-12"><a href="#cb5-12"></a></span>
-<span id="cb5-13"><a href="#cb5-13"></a></span>
-<span id="cb5-14"><a href="#cb5-14"></a><span class="st">  # Especificar los umbrales para cada ítem</span></span>
-<span id="cb5-15"><a href="#cb5-15"></a><span class="st">  y1 | -2*t1 + -1*t2 + 1*t3 + 2*t4</span></span>
-<span id="cb5-16"><a href="#cb5-16"></a><span class="st">  y2 | -2*t1 + -1*t2 + 1*t3 + 2*t4</span></span>
-<span id="cb5-17"><a href="#cb5-17"></a><span class="st">  y3 | -2*t1 + -1*t2 + 1*t3 + 2*t4</span></span>
-<span id="cb5-18"><a href="#cb5-18"></a><span class="st">  y4 | -2*t1 + -1*t2 + 1*t3 + 2*t4</span></span>
-<span id="cb5-19"><a href="#cb5-19"></a><span class="st">  y5 | -2*t1 + -1*t2 + 1*t3 + 2*t4</span></span>
-<span id="cb5-20"><a href="#cb5-20"></a><span class="st">  y6 | -2*t1 + -1*t2 + 1*t3 + 2*t4</span></span>
-<span id="cb5-21"><a href="#cb5-21"></a><span class="st">  y7 | -2*t1 + -1*t2 + 1*t3 + 2*t4</span></span>
-<span id="cb5-22"><a href="#cb5-22"></a><span class="st">  y8 | -2*t1 + -1*t2 + 1*t3 + 2*t4</span></span>
-<span id="cb5-23"><a href="#cb5-23"></a><span class="st">  y9 | -2*t1 + -1*t2 + 1*t3 + 2*t4</span></span>
-<span id="cb5-24"><a href="#cb5-24"></a><span class="st">  y10 | -2*t1 + -1*t2 + 1*t3 + 2*t4</span></span>
-<span id="cb5-25"><a href="#cb5-25"></a><span class="st">  y11 | -2*t1 + -1*t2 + 1*t3 + 2*t4</span></span>
-<span id="cb5-26"><a href="#cb5-26"></a><span class="st">  y12 | -2*t1 + -1*t2 + 1*t3 + 2*t4</span></span>
-<span id="cb5-27"><a href="#cb5-27"></a><span class="st">  y13 | -2*t1 + -1*t2 + 1*t3 + 2*t4</span></span>
-<span id="cb5-28"><a href="#cb5-28"></a><span class="st">  y14 | -2*t1 + -1*t2 + 1*t3 + 2*t4</span></span>
-<span id="cb5-29"><a href="#cb5-29"></a><span class="st">  y15 | -2*t1 + -1*t2 + 1*t3 + 2*t4</span></span>
-<span id="cb5-30"><a href="#cb5-30"></a><span class="st">&#39;</span></span>
-<span id="cb5-31"><a href="#cb5-31"></a></span>
-<span id="cb5-32"><a href="#cb5-32"></a><span class="co"># Simular los datos</span></span>
-<span id="cb5-33"><a href="#cb5-33"></a><span class="fu">set.seed</span>(<span class="dv">123</span>) <span class="co"># Para reproducibilidad</span></span>
-<span id="cb5-34"><a href="#cb5-34"></a>simData_g1 <span class="ot">&lt;-</span> <span class="fu">simulateData</span>(model_g1, </span>
-<span id="cb5-35"><a href="#cb5-35"></a>                           <span class="at">sample.nobs =</span> <span class="dv">250</span>,</span>
-<span id="cb5-36"><a href="#cb5-36"></a>                           <span class="at">model.type =</span> <span class="st">&quot;cfa&quot;</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-12"><a href="#cb5-12"></a><span class="st">  </span></span>
+<span id="cb5-13"><a href="#cb5-13"></a><span class="st">  # Establecer las medias latentes</span></span>
+<span id="cb5-14"><a href="#cb5-14"></a><span class="st">  F1 ~ 0*1</span></span>
+<span id="cb5-15"><a href="#cb5-15"></a><span class="st">  F2 ~ 0*1</span></span>
+<span id="cb5-16"><a href="#cb5-16"></a><span class="st">  F3 ~ 0.1*1</span></span>
+<span id="cb5-17"><a href="#cb5-17"></a></span>
+<span id="cb5-18"><a href="#cb5-18"></a><span class="st">  # Especificar los umbrales para cada ítem</span></span>
+<span id="cb5-19"><a href="#cb5-19"></a><span class="st">  y1 | -2*t1 + -1*t2 + 1*t3 + 2*t4</span></span>
+<span id="cb5-20"><a href="#cb5-20"></a><span class="st">  y2 | -2*t1 + -1*t2 + 1*t3 + 2*t4</span></span>
+<span id="cb5-21"><a href="#cb5-21"></a><span class="st">  y3 | -2*t1 + -1*t2 + 1*t3 + 2*t4</span></span>
+<span id="cb5-22"><a href="#cb5-22"></a><span class="st">  y4 | -2*t1 + -1*t2 + 1*t3 + 2*t4</span></span>
+<span id="cb5-23"><a href="#cb5-23"></a><span class="st">  y5 | -2*t1 + -1*t2 + 1*t3 + 2*t4</span></span>
+<span id="cb5-24"><a href="#cb5-24"></a><span class="st">  y6 | -2*t1 + -1*t2 + 1*t3 + 2*t4</span></span>
+<span id="cb5-25"><a href="#cb5-25"></a><span class="st">  y7 | -2*t1 + -1*t2 + 1*t3 + 2*t4</span></span>
+<span id="cb5-26"><a href="#cb5-26"></a><span class="st">  y8 | -2*t1 + -1*t2 + 1*t3 + 2*t4</span></span>
+<span id="cb5-27"><a href="#cb5-27"></a><span class="st">  y9 | -2*t1 + -1*t2 + 1*t3 + 2*t4</span></span>
+<span id="cb5-28"><a href="#cb5-28"></a><span class="st">  y10 | -2*t1 + -1*t2 + 1*t3 + 2*t4</span></span>
+<span id="cb5-29"><a href="#cb5-29"></a><span class="st">  y11 | -2*t1 + -1*t2 + 1*t3 + 2*t4</span></span>
+<span id="cb5-30"><a href="#cb5-30"></a><span class="st">  y12 | -2*t1 + -1*t2 + 1*t3 + 2*t4</span></span>
+<span id="cb5-31"><a href="#cb5-31"></a><span class="st">  y13 | -2*t1 + -1*t2 + 1*t3 + 2*t4</span></span>
+<span id="cb5-32"><a href="#cb5-32"></a><span class="st">  y14 | -2*t1 + -1*t2 + 1*t3 + 2*t4</span></span>
+<span id="cb5-33"><a href="#cb5-33"></a><span class="st">  y15 | -2*t1 + -1*t2 + 1*t3 + 2*t4</span></span>
+<span id="cb5-34"><a href="#cb5-34"></a><span class="st">&#39;</span></span>
+<span id="cb5-35"><a href="#cb5-35"></a></span>
+<span id="cb5-36"><a href="#cb5-36"></a><span class="co"># Simular los datos</span></span>
+<span id="cb5-37"><a href="#cb5-37"></a><span class="fu">set.seed</span>(<span class="dv">123</span>) <span class="co"># Para reproducibilidad</span></span>
+<span id="cb5-38"><a href="#cb5-38"></a>simData_g1 <span class="ot">&lt;-</span> <span class="fu">simulateData</span>(model_g1, </span>
+<span id="cb5-39"><a href="#cb5-39"></a>                           <span class="at">sample.nobs =</span> <span class="dv">250</span>,</span>
+<span id="cb5-40"><a href="#cb5-40"></a>                           <span class="at">model.type =</span> <span class="st">&quot;cfa&quot;</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <div class="cell">
@@ -4343,10 +4347,10 @@ lavaan is FREE software! Please report any bugs.</code></pre>
  4     3     3     3     3     3     3     3     3     3     3     2     3     3
  5     5     3     3     3     3     3     3     3     4     3     3     3     2
  6     2     2     3     1     3     3     3     2     2     1     3     2     2
- 7     3     3     3     3     3     3     3     3     3     3     3     1     3
+ 7     3     3     3     3     3     3     3     3     3     3     3     2     3
  8     4     4     3     5     5     4     3     3     3     3     3     3     3
  9     3     3     3     3     4     3     3     3     3     3     3     4     3
-10     3     3     3     3     3     2     3     2     3     3     4     3     4
+10     3     3     3     3     3     2     3     2     3     3     4     4     4
 # ℹ 240 more rows
 # ℹ 2 more variables: y14 &lt;dbl&gt;, y15 &lt;dbl&gt;</code></pre>
 </div>
@@ -4359,36 +4363,40 @@ lavaan is FREE software! Please report any bugs.</code></pre>
 <span id="cb8-3"><a href="#cb8-3"></a><span class="st">  # Definición de los factores</span></span>
 <span id="cb8-4"><a href="#cb8-4"></a><span class="st">  F1 =~ 0.71*y1 + 0.71*y2 + 0.72*y3 + 0.71*y4 + 0.72*y5</span></span>
 <span id="cb8-5"><a href="#cb8-5"></a><span class="st">  F2 =~ 0.81*y6 + 0.81*y7 + 0.81*y8 + 0.81*y9 + 0.82*y10</span></span>
-<span id="cb8-6"><a href="#cb8-6"></a><span class="st">  F3 =~ 0.77*y11 + 0.77*y12 + 0.50*y13 + 0.78*y14 + 0.76*y15</span></span>
+<span id="cb8-6"><a href="#cb8-6"></a><span class="st">  F3 =~ 0.77*y11 + 0.79*y12 + 0.40*y13 + 0.81*y14 + 0.76*y15</span></span>
 <span id="cb8-7"><a href="#cb8-7"></a></span>
 <span id="cb8-8"><a href="#cb8-8"></a><span class="st">  # Correlaciones entre factores</span></span>
 <span id="cb8-9"><a href="#cb8-9"></a><span class="st">  F1 ~~ 0.7*F2</span></span>
 <span id="cb8-10"><a href="#cb8-10"></a><span class="st">  F1 ~~ 0.6*F3</span></span>
-<span id="cb8-11"><a href="#cb8-11"></a><span class="st">  F2 ~~ 0.5*F3</span></span>
-<span id="cb8-12"><a href="#cb8-12"></a></span>
-<span id="cb8-13"><a href="#cb8-13"></a></span>
-<span id="cb8-14"><a href="#cb8-14"></a><span class="st">  # Especificar los umbrales para cada ítem</span></span>
-<span id="cb8-15"><a href="#cb8-15"></a><span class="st">  y1 | -2*t1 + -1*t2 + 1*t3 + 2*t4</span></span>
-<span id="cb8-16"><a href="#cb8-16"></a><span class="st">  y2 | -2*t1 + -1*t2 + 1*t3 + 2*t4</span></span>
-<span id="cb8-17"><a href="#cb8-17"></a><span class="st">  y3 | -2*t1 + -1*t2 + 1*t3 + 2*t4</span></span>
-<span id="cb8-18"><a href="#cb8-18"></a><span class="st">  y4 | -2*t1 + -1*t2 + 1*t3 + 2*t4</span></span>
-<span id="cb8-19"><a href="#cb8-19"></a><span class="st">  y5 | -2*t1 + -1*t2 + 1*t3 + 2*t4</span></span>
-<span id="cb8-20"><a href="#cb8-20"></a><span class="st">  y6 | -2*t1 + -1*t2 + 1*t3 + 2*t4</span></span>
-<span id="cb8-21"><a href="#cb8-21"></a><span class="st">  y7 | -2*t1 + -1*t2 + 1*t3 + 2*t4</span></span>
-<span id="cb8-22"><a href="#cb8-22"></a><span class="st">  y8 | -2*t1 + -1*t2 + 1*t3 + 2*t4</span></span>
-<span id="cb8-23"><a href="#cb8-23"></a><span class="st">  y9 | -2*t1 + -1*t2 + 1*t3 + 2*t4</span></span>
-<span id="cb8-24"><a href="#cb8-24"></a><span class="st">  y10 | -2*t1 + -1*t2 + 1*t3 + 2*t4</span></span>
-<span id="cb8-25"><a href="#cb8-25"></a><span class="st">  y11 | -2*t1 + -1*t2 + 1*t3 + 2*t4</span></span>
-<span id="cb8-26"><a href="#cb8-26"></a><span class="st">  y12 | -2*t1 + -1*t2 + 1*t3 + 2*t4</span></span>
-<span id="cb8-27"><a href="#cb8-27"></a><span class="st">  y13 | -2*t1 + -1*t2 + 1*t3 + 2*t4</span></span>
-<span id="cb8-28"><a href="#cb8-28"></a><span class="st">  y14 | -2*t1 + -1*t2 + 1*t3 + 2*t4</span></span>
-<span id="cb8-29"><a href="#cb8-29"></a><span class="st">  y15 | -2*t1 + -1*t2 + 1*t3 + 2*t4</span></span>
-<span id="cb8-30"><a href="#cb8-30"></a><span class="st">&#39;</span></span>
-<span id="cb8-31"><a href="#cb8-31"></a></span>
-<span id="cb8-32"><a href="#cb8-32"></a><span class="fu">set.seed</span>(<span class="dv">123</span>) <span class="co"># Para reproducibilidad</span></span>
-<span id="cb8-33"><a href="#cb8-33"></a>simData_g2 <span class="ot">&lt;-</span> <span class="fu">simulateData</span>(model_g2, </span>
-<span id="cb8-34"><a href="#cb8-34"></a>                           <span class="at">sample.nobs =</span> <span class="dv">250</span>,</span>
-<span id="cb8-35"><a href="#cb8-35"></a>                           <span class="at">model.type =</span> <span class="st">&quot;cfa&quot;</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-11"><a href="#cb8-11"></a><span class="st">  F2 ~~ 0.75*F3</span></span>
+<span id="cb8-12"><a href="#cb8-12"></a><span class="st">  </span></span>
+<span id="cb8-13"><a href="#cb8-13"></a><span class="st">  # Establecer las medias latentes</span></span>
+<span id="cb8-14"><a href="#cb8-14"></a><span class="st">  F1 ~ 0.6*1</span></span>
+<span id="cb8-15"><a href="#cb8-15"></a><span class="st">  F2 ~ 0.3*1</span></span>
+<span id="cb8-16"><a href="#cb8-16"></a><span class="st">  F3 ~ 0.1*1</span></span>
+<span id="cb8-17"><a href="#cb8-17"></a><span class="st">  </span></span>
+<span id="cb8-18"><a href="#cb8-18"></a><span class="st">  # Especificar los umbrales para cada ítem</span></span>
+<span id="cb8-19"><a href="#cb8-19"></a><span class="st">  y1 | -2*t1 + -1*t2 + 1*t3 + 2*t4</span></span>
+<span id="cb8-20"><a href="#cb8-20"></a><span class="st">  y2 | -2*t1 + -1*t2 + 1*t3 + 2*t4</span></span>
+<span id="cb8-21"><a href="#cb8-21"></a><span class="st">  y3 | -2*t1 + -1*t2 + 1*t3 + 2*t4</span></span>
+<span id="cb8-22"><a href="#cb8-22"></a><span class="st">  y4 | -2*t1 + -1*t2 + 1*t3 + 2*t4</span></span>
+<span id="cb8-23"><a href="#cb8-23"></a><span class="st">  y5 | -2*t1 + -1*t2 + 1*t3 + 2*t4</span></span>
+<span id="cb8-24"><a href="#cb8-24"></a><span class="st">  y6 | -2*t1 + -1*t2 + 1*t3 + 2*t4</span></span>
+<span id="cb8-25"><a href="#cb8-25"></a><span class="st">  y7 | -2*t1 + -1*t2 + 1*t3 + 2*t4</span></span>
+<span id="cb8-26"><a href="#cb8-26"></a><span class="st">  y8 | -2*t1 + -1*t2 + 1*t3 + 2*t4</span></span>
+<span id="cb8-27"><a href="#cb8-27"></a><span class="st">  y9 | -2*t1 + -1*t2 + 1*t3 + 2*t4</span></span>
+<span id="cb8-28"><a href="#cb8-28"></a><span class="st">  y10 | -2*t1 + -1*t2 + 1*t3 + 2*t4</span></span>
+<span id="cb8-29"><a href="#cb8-29"></a><span class="st">  y11 | -2*t1 + -1*t2 + 1*t3 + 2*t4</span></span>
+<span id="cb8-30"><a href="#cb8-30"></a><span class="st">  y12 | -2*t1 + -1*t2 + 1*t3 + 2*t4</span></span>
+<span id="cb8-31"><a href="#cb8-31"></a><span class="st">  y13 | -2*t1 + -1*t2 + 1*t3 + 2*t4</span></span>
+<span id="cb8-32"><a href="#cb8-32"></a><span class="st">  y14 | -2*t1 + -1*t2 + 1*t3 + 2*t4</span></span>
+<span id="cb8-33"><a href="#cb8-33"></a><span class="st">  y15 | -2*t1 + -1*t2 + 1*t3 + 2*t4</span></span>
+<span id="cb8-34"><a href="#cb8-34"></a><span class="st">&#39;</span></span>
+<span id="cb8-35"><a href="#cb8-35"></a></span>
+<span id="cb8-36"><a href="#cb8-36"></a><span class="fu">set.seed</span>(<span class="dv">123</span>) <span class="co"># Para reproducibilidad</span></span>
+<span id="cb8-37"><a href="#cb8-37"></a>simData_g2 <span class="ot">&lt;-</span> <span class="fu">simulateData</span>(model_g2, </span>
+<span id="cb8-38"><a href="#cb8-38"></a>                           <span class="at">sample.nobs =</span> <span class="dv">250</span>,</span>
+<span id="cb8-39"><a href="#cb8-39"></a>                           <span class="at">model.type =</span> <span class="st">&quot;cfa&quot;</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <div class="cell">
@@ -4397,16 +4405,16 @@ lavaan is FREE software! Please report any bugs.</code></pre>
 <pre><code># A tibble: 250 × 15
       y1    y2    y3    y4    y5    y6    y7    y8    y9   y10   y11   y12   y13
    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
- 1     3     4     3     3     4     3     3     3     3     4     2     3     4
- 2     3     4     4     3     3     3     3     3     3     3     3     3     3
- 3     2     2     2     2     2     3     2     3     3     2     1     3     3
- 4     3     3     2     3     3     3     3     3     3     3     3     4     3
- 5     3     5     3     3     3     3     2     3     1     3     4     3     3
- 6     3     2     2     3     1     2     2     3     3     2     3     2     3
- 7     3     3     3     3     3     2     2     3     2     3     3     3     3
- 8     5     3     5     4     4     3     3     3     3     3     3     4     3
- 9     3     3     3     3     3     4     3     3     3     3     3     4     2
-10     3     3     3     3     3     3     4     4     3     4     3     3     3
+ 1     4     3     3     3     4     3     4     3     3     4     3     3     4
+ 2     4     3     4     3     3     3     4     3     3     3     3     3     3
+ 3     3     3     3     3     3     3     2     2     2     1     2     3     3
+ 4     3     3     3     3     3     3     3     3     3     3     3     4     3
+ 5     4     2     3     3     2     3     3     4     4     3     3     3     3
+ 6     3     3     3     3     1     3     2     2     3     2     2     2     3
+ 7     3     3     3     3     3     3     3     3     3     3     2     3     3
+ 8     3     4     4     3     3     5     4     4     5     4     3     4     3
+ 9     3     4     3     4     3     3     3     4     3     3     4     4     2
+10     4     4     4     4     3     3     4     3     3     4     3     3     3
 # ℹ 240 more rows
 # ℹ 2 more variables: y14 &lt;dbl&gt;, y15 &lt;dbl&gt;</code></pre>
 </div>
@@ -4417,10 +4425,10 @@ lavaan is FREE software! Please report any bugs.</code></pre>
 <details open><summary>Código</summary><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a>simData <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(</span>
 <span id="cb11-2"><a href="#cb11-2"></a>  simData_g1,</span>
 <span id="cb11-3"><a href="#cb11-3"></a>  simData_g2,</span>
-<span id="cb11-4"><a href="#cb11-4"></a>  <span class="at">.id =</span> <span class="st">&quot;Sex&quot;</span></span>
+<span id="cb11-4"><a href="#cb11-4"></a>  <span class="at">.id =</span> <span class="st">&quot;Sexo&quot;</span></span>
 <span id="cb11-5"><a href="#cb11-5"></a>) <span class="sc">%&gt;%</span> </span>
 <span id="cb11-6"><a href="#cb11-6"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb11-7"><a href="#cb11-7"></a>    <span class="at">Sex =</span> <span class="fu">factor</span>(Sex,</span>
+<span id="cb11-7"><a href="#cb11-7"></a>    <span class="at">Sexo =</span> <span class="fu">factor</span>(Sexo,</span>
 <span id="cb11-8"><a href="#cb11-8"></a>                 <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;Mujer&quot;</span>, <span class="st">&quot;Varón&quot;</span>))</span>
 <span id="cb11-9"><a href="#cb11-9"></a>  ) <span class="sc">%&gt;%</span> </span>
 <span id="cb11-10"><a href="#cb11-10"></a>  <span class="fu">as_tibble</span>()</span>
@@ -4428,7 +4436,7 @@ lavaan is FREE software! Please report any bugs.</code></pre>
 <span id="cb11-12"><a href="#cb11-12"></a>simData</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details><div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 500 × 16
-   Sex      y1    y2    y3    y4    y5    y6    y7    y8    y9   y10   y11   y12
+   Sexo     y1    y2    y3    y4    y5    y6    y7    y8    y9   y10   y11   y12
    &lt;fct&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
  1 Mujer     3     4     3     3     3     3     3     3     3     3     3     3
  2 Mujer     4     3     3     3     3     3     3     3     3     3     3     3
@@ -4436,10 +4444,10 @@ lavaan is FREE software! Please report any bugs.</code></pre>
  4 Mujer     3     3     3     3     3     3     3     3     3     3     2     3
  5 Mujer     5     3     3     3     3     3     3     3     4     3     3     3
  6 Mujer     2     2     3     1     3     3     3     2     2     1     3     2
- 7 Mujer     3     3     3     3     3     3     3     3     3     3     3     1
+ 7 Mujer     3     3     3     3     3     3     3     3     3     3     3     2
  8 Mujer     4     4     3     5     5     4     3     3     3     3     3     3
  9 Mujer     3     3     3     3     4     3     3     3     3     3     3     4
-10 Mujer     3     3     3     3     3     2     3     2     3     3     4     3
+10 Mujer     3     3     3     3     3     2     3     2     3     3     4     4
 # ℹ 490 more rows
 # ℹ 3 more variables: y13 &lt;dbl&gt;, y14 &lt;dbl&gt;, y15 &lt;dbl&gt;</code></pre>
 </div>
@@ -4460,7 +4468,7 @@ lavaan is FREE software! Please report any bugs.</code></pre>
 <span id="cb13-11"><a href="#cb13-11"></a></span>
 <span id="cb13-12"><a href="#cb13-12"></a><span class="fu">summary</span>(fit, <span class="at">fit.measures =</span> <span class="cn">TRUE</span>, <span class="at">standardized =</span> <span class="cn">TRUE</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details><div class="cell-output cell-output-stdout">
-<pre><code>lavaan 0.6.16 ended normally after 27 iterations
+<pre><code>lavaan 0.6.16 ended normally after 29 iterations
 
   Estimator                                       DWLS
   Optimization method                           NLMINB
@@ -4470,45 +4478,45 @@ lavaan is FREE software! Please report any bugs.</code></pre>
 
 Model Test User Model:
                                               Standard      Scaled
-  Test Statistic                                72.539     108.482
+  Test Statistic                                36.039      62.668
   Degrees of freedom                                87          87
-  P-value (Chi-square)                           0.867       0.059
-  Scaling correction factor                                  0.799
-  Shift parameter                                           17.697
+  P-value (Chi-square)                           1.000       0.977
+  Scaling correction factor                                  0.768
+  Shift parameter                                           15.767
     simple second-order correction                                
 
 Model Test Baseline Model:
 
-  Test statistic                              7348.900    4020.762
+  Test statistic                              7917.274    4423.251
   Degrees of freedom                               105         105
   P-value                                        0.000       0.000
-  Scaling correction factor                                  1.850
+  Scaling correction factor                                  1.809
 
 User Model versus Baseline Model:
 
-  Comparative Fit Index (CFI)                    1.000       0.995
-  Tucker-Lewis Index (TLI)                       1.002       0.993
+  Comparative Fit Index (CFI)                    1.000       1.000
+  Tucker-Lewis Index (TLI)                       1.008       1.007
                                                                   
-  Robust Comparative Fit Index (CFI)                         0.982
-  Robust Tucker-Lewis Index (TLI)                            0.979
+  Robust Comparative Fit Index (CFI)                         1.000
+  Robust Tucker-Lewis Index (TLI)                            1.032
 
 Root Mean Square Error of Approximation:
 
-  RMSEA                                          0.000       0.022
+  RMSEA                                          0.000       0.000
   90 Percent confidence interval - lower         0.000       0.000
-  90 Percent confidence interval - upper         0.013       0.035
+  90 Percent confidence interval - upper         0.000       0.000
   P-value H_0: RMSEA &lt;= 0.050                    1.000       1.000
   P-value H_0: RMSEA &gt;= 0.080                    0.000       0.000
                                                                   
-  Robust RMSEA                                               0.038
+  Robust RMSEA                                               0.000
   90 Percent confidence interval - lower                     0.000
-  90 Percent confidence interval - upper                     0.058
-  P-value H_0: Robust RMSEA &lt;= 0.050                         0.831
+  90 Percent confidence interval - upper                     0.000
+  P-value H_0: Robust RMSEA &lt;= 0.050                         1.000
   P-value H_0: Robust RMSEA &gt;= 0.080                         0.000
 
 Standardized Root Mean Square Residual:
 
-  SRMR                                           0.039       0.039
+  SRMR                                           0.027       0.027
 
 Parameter Estimates:
 
@@ -4519,31 +4527,31 @@ Parameter Estimates:
 Latent Variables:
                    Estimate  Std.Err  z-value  P(&gt;|z|)   Std.lv  Std.all
   F1 =~                                                                 
-    y1                1.000                               0.751    0.751
-    y2                0.935    0.066   14.109    0.000    0.702    0.702
-    y3                0.929    0.070   13.295    0.000    0.697    0.697
-    y4                0.878    0.073   11.966    0.000    0.659    0.659
-    y5                0.923    0.067   13.793    0.000    0.693    0.693
+    y1                1.000                               0.761    0.761
+    y2                0.899    0.063   14.275    0.000    0.684    0.684
+    y3                0.925    0.065   14.193    0.000    0.704    0.704
+    y4                0.887    0.072   12.369    0.000    0.675    0.675
+    y5                0.874    0.066   13.266    0.000    0.665    0.665
   F2 =~                                                                 
-    y6                1.000                               0.737    0.737
-    y7                1.114    0.060   18.592    0.000    0.821    0.821
-    y8                1.027    0.060   17.144    0.000    0.757    0.757
-    y9                1.127    0.055   20.394    0.000    0.831    0.831
-    y10               1.044    0.058   18.114    0.000    0.770    0.770
+    y6                1.000                               0.748    0.748
+    y7                1.095    0.056   19.640    0.000    0.819    0.819
+    y8                1.018    0.055   18.509    0.000    0.761    0.761
+    y9                1.097    0.053   20.555    0.000    0.820    0.820
+    y10               1.019    0.056   18.084    0.000    0.762    0.762
   F3 =~                                                                 
-    y11               1.000                               0.728    0.728
-    y12               1.115    0.080   13.920    0.000    0.812    0.812
-    y13               0.768    0.071   10.821    0.000    0.559    0.559
-    y14               1.005    0.073   13.694    0.000    0.732    0.732
-    y15               0.992    0.077   12.917    0.000    0.723    0.723
+    y11               1.000                               0.743    0.743
+    y12               1.097    0.071   15.451    0.000    0.815    0.815
+    y13               0.708    0.069   10.322    0.000    0.526    0.526
+    y14               1.004    0.066   15.247    0.000    0.746    0.746
+    y15               0.974    0.071   13.669    0.000    0.724    0.724
 
 Covariances:
                    Estimate  Std.Err  z-value  P(&gt;|z|)   Std.lv  Std.all
   F1 ~~                                                                 
-    F2                0.363    0.034   10.742    0.000    0.657    0.657
-    F3                0.294    0.032    9.303    0.000    0.538    0.538
+    F2                0.376    0.032   11.632    0.000    0.661    0.661
+    F3                0.295    0.031    9.378    0.000    0.522    0.522
   F2 ~~                                                                 
-    F3                0.254    0.030    8.572    0.000    0.473    0.473
+    F3                0.329    0.031   10.664    0.000    0.593    0.593
 
 Intercepts:
                    Estimate  Std.Err  z-value  P(&gt;|z|)   Std.lv  Std.all
@@ -4568,87 +4576,87 @@ Intercepts:
 
 Thresholds:
                    Estimate  Std.Err  z-value  P(&gt;|z|)   Std.lv  Std.all
-    y1|t1            -2.144    0.140  -15.281    0.000   -2.144   -2.144
-    y1|t2            -1.019    0.068  -14.969    0.000   -1.019   -1.019
-    y1|t3             0.994    0.067   14.743    0.000    0.994    0.994
-    y1|t4             2.097    0.134   15.597    0.000    2.097    2.097
-    y2|t1            -1.852    0.110  -16.873    0.000   -1.852   -1.852
-    y2|t2            -1.054    0.069  -15.264    0.000   -1.054   -1.054
-    y2|t3             0.946    0.066   14.281    0.000    0.946    0.946
-    y2|t4             1.943    0.118   16.474    0.000    1.943    1.943
-    y3|t1            -2.054    0.129  -15.866    0.000   -2.054   -2.054
-    y3|t2            -0.994    0.067  -14.743    0.000   -0.994   -0.994
-    y3|t3             1.028    0.068   15.044    0.000    1.028    1.028
-    y3|t4             2.054    0.129   15.866    0.000    2.054    2.054
+    y1|t1            -2.326    0.167  -13.920    0.000   -2.326   -2.326
+    y1|t2            -1.098    0.070  -15.621    0.000   -1.098   -1.098
+    y1|t3             0.693    0.061   11.314    0.000    0.693    0.693
+    y1|t4             1.728    0.100   17.252    0.000    1.728    1.728
+    y2|t1            -2.197    0.147  -14.909    0.000   -2.197   -2.197
+    y2|t2            -1.270    0.076  -16.693    0.000   -1.270   -1.270
+    y2|t3             0.719    0.062   11.655    0.000    0.719    0.719
+    y2|t4             1.852    0.110   16.873    0.000    1.852    1.852
+    y3|t1            -2.144    0.140  -15.281    0.000   -2.144   -2.144
+    y3|t2            -1.165    0.072  -16.093    0.000   -1.165   -1.165
+    y3|t3             0.786    0.063   12.497    0.000    0.786    0.786
+    y3|t4             1.799    0.105   17.059    0.000    1.799    1.799
     y4|t1            -2.097    0.134  -15.597    0.000   -2.097   -2.097
-    y4|t2            -1.045    0.069  -15.191    0.000   -1.045   -1.045
-    y4|t3             1.117    0.071   15.759    0.000    1.117    1.117
-    y4|t4             2.144    0.140   15.281    0.000    2.144    2.144
-    y5|t1            -2.054    0.129  -15.866    0.000   -2.054   -2.054
-    y5|t2            -1.071    0.070  -15.409    0.000   -1.071   -1.071
-    y5|t3             1.136    0.071   15.895    0.000    1.136    1.136
-    y5|t4             2.257    0.156   14.463    0.000    2.257    2.257
-    y6|t1            -2.014    0.125  -16.099    0.000   -2.014   -2.014
-    y6|t2            -0.938    0.066  -14.203    0.000   -0.938   -0.938
-    y6|t3             1.011    0.068   14.895    0.000    1.011    1.011
-    y6|t4             2.097    0.134   15.597    0.000    2.097    2.097
-    y7|t1            -1.911    0.115  -16.626    0.000   -1.911   -1.911
-    y7|t2            -0.931    0.066  -14.124    0.000   -0.931   -0.931
-    y7|t3             1.108    0.071   15.690    0.000    1.108    1.108
-    y7|t4             2.512    0.203   12.355    0.000    2.512    2.512
-    y8|t1            -2.014    0.125  -16.099    0.000   -2.014   -2.014
-    y8|t2            -1.036    0.069  -15.118    0.000   -1.036   -1.036
-    y8|t3             1.063    0.069   15.337    0.000    1.063    1.063
-    y8|t4             2.257    0.156   14.463    0.000    2.257    2.257
-    y9|t1            -1.911    0.115  -16.626    0.000   -1.911   -1.911
-    y9|t2            -0.978    0.067  -14.591    0.000   -0.978   -0.978
-    y9|t3             1.063    0.069   15.337    0.000    1.063    1.063
-    y9|t4             2.014    0.125   16.099    0.000    2.014    2.014
-    y10|t1           -2.054    0.129  -15.866    0.000   -2.054   -2.054
-    y10|t2           -0.931    0.066  -14.124    0.000   -0.931   -0.931
-    y10|t3            0.978    0.067   14.591    0.000    0.978    0.978
-    y10|t4            2.326    0.167   13.920    0.000    2.326    2.326
-    y11|t1           -2.014    0.125  -16.099    0.000   -2.014   -2.014
-    y11|t2           -0.970    0.067  -14.514    0.000   -0.970   -0.970
-    y11|t3            0.946    0.066   14.281    0.000    0.946    0.946
-    y11|t4            2.144    0.140   15.281    0.000    2.144    2.144
-    y12|t1           -2.014    0.125  -16.099    0.000   -2.014   -2.014
-    y12|t2           -1.011    0.068  -14.895    0.000   -1.011   -1.011
-    y12|t3            1.019    0.068   14.969    0.000    1.019    1.019
-    y12|t4            2.409    0.182   13.240    0.000    2.409    2.409
-    y13|t1           -2.197    0.147  -14.909    0.000   -2.197   -2.197
-    y13|t2           -0.994    0.067  -14.743    0.000   -0.994   -0.994
-    y13|t3            0.978    0.067   14.591    0.000    0.978    0.978
-    y13|t4            2.054    0.129   15.866    0.000    2.054    2.054
-    y14|t1           -2.014    0.125  -16.099    0.000   -2.014   -2.014
-    y14|t2           -1.089    0.070  -15.551    0.000   -1.089   -1.089
-    y14|t3            1.045    0.069   15.191    0.000    1.045    1.045
+    y4|t2            -1.146    0.072  -15.962    0.000   -1.146   -1.146
+    y4|t3             0.786    0.063   12.497    0.000    0.786    0.786
+    y4|t4             1.911    0.115   16.626    0.000    1.911    1.911
+    y5|t1            -2.409    0.182  -13.240    0.000   -2.409   -2.409
+    y5|t2            -1.216    0.074  -16.406    0.000   -1.216   -1.216
+    y5|t3             0.849    0.064   13.240    0.000    0.849    0.849
+    y5|t4             2.014    0.125   16.099    0.000    2.014    2.014
+    y6|t1            -2.097    0.134  -15.597    0.000   -2.097   -2.097
+    y6|t2            -1.175    0.073  -16.157    0.000   -1.175   -1.175
+    y6|t3             0.893    0.065   13.726    0.000    0.893    0.893
+    y6|t4             1.977    0.121   16.300    0.000    1.977    1.977
+    y7|t1            -1.977    0.121  -16.300    0.000   -1.977   -1.977
+    y7|t2            -1.117    0.071  -15.759    0.000   -1.117   -1.117
+    y7|t3             0.915    0.066   13.966    0.000    0.915    0.915
+    y7|t4             2.197    0.147   14.909    0.000    2.197    2.197
+    y8|t1            -2.097    0.134  -15.597    0.000   -2.097   -2.097
+    y8|t2            -1.165    0.072  -16.093    0.000   -1.165   -1.165
+    y8|t3             0.893    0.065   13.726    0.000    0.893    0.893
+    y8|t4             2.144    0.140   15.281    0.000    2.144    2.144
+    y9|t1            -2.097    0.134  -15.597    0.000   -2.097   -2.097
+    y9|t2            -1.063    0.069  -15.337    0.000   -1.063   -1.063
+    y9|t3             0.908    0.065   13.886    0.000    0.908    0.908
+    y9|t4             1.852    0.110   16.873    0.000    1.852    1.852
+    y10|t1           -2.097    0.134  -15.597    0.000   -2.097   -2.097
+    y10|t2           -1.175    0.073  -16.157    0.000   -1.175   -1.175
+    y10|t3            0.885    0.065   13.646    0.000    0.885    0.885
+    y10|t4            2.197    0.147   14.909    0.000    2.197    2.197
+    y11|t1           -2.054    0.129  -15.866    0.000   -2.054   -2.054
+    y11|t2           -1.063    0.069  -15.337    0.000   -1.063   -1.063
+    y11|t3            0.923    0.066   14.045    0.000    0.923    0.923
+    y11|t4            2.097    0.134   15.597    0.000    2.097    2.097
+    y12|t1           -2.197    0.147  -14.909    0.000   -2.197   -2.197
+    y12|t2           -1.063    0.069  -15.337    0.000   -1.063   -1.063
+    y12|t3            0.938    0.066   14.203    0.000    0.938    0.938
+    y12|t4            2.257    0.156   14.463    0.000    2.257    2.257
+    y13|t1           -2.257    0.156  -14.463    0.000   -2.257   -2.257
+    y13|t2           -1.045    0.069  -15.191    0.000   -1.045   -1.045
+    y13|t3            1.011    0.068   14.895    0.000    1.011    1.011
+    y13|t4            1.881    0.112   16.758    0.000    1.881    1.881
+    y14|t1           -1.943    0.118  -16.474    0.000   -1.943   -1.943
+    y14|t2           -1.227    0.074  -16.466    0.000   -1.227   -1.227
+    y14|t3            0.938    0.066   14.203    0.000    0.938    0.938
     y14|t4            2.144    0.140   15.281    0.000    2.144    2.144
-    y15|t1           -2.144    0.140  -15.281    0.000   -2.144   -2.144
-    y15|t2           -1.089    0.070  -15.551    0.000   -1.089   -1.089
-    y15|t3            0.978    0.067   14.591    0.000    0.978    0.978
-    y15|t4            1.977    0.121   16.300    0.000    1.977    1.977
+    y15|t1           -2.326    0.167  -13.920    0.000   -2.326   -2.326
+    y15|t2           -1.146    0.072  -15.962    0.000   -1.146   -1.146
+    y15|t3            0.893    0.065   13.726    0.000    0.893    0.893
+    y15|t4            1.943    0.118   16.474    0.000    1.943    1.943
 
 Variances:
                    Estimate  Std.Err  z-value  P(&gt;|z|)   Std.lv  Std.all
-   .y1                0.437                               0.437    0.437
-   .y2                0.508                               0.508    0.508
-   .y3                0.514                               0.514    0.514
-   .y4                0.565                               0.565    0.565
-   .y5                0.520                               0.520    0.520
-   .y6                0.457                               0.457    0.457
-   .y7                0.325                               0.325    0.325
-   .y8                0.428                               0.428    0.428
-   .y9                0.310                               0.310    0.310
-   .y10               0.408                               0.408    0.408
-   .y11               0.469                               0.469    0.469
-   .y12               0.340                               0.340    0.340
-   .y13               0.687                               0.687    0.687
-   .y14               0.464                               0.464    0.464
-   .y15               0.477                               0.477    0.477
-    F1                0.563    0.059    9.535    0.000    1.000    1.000
-    F2                0.543    0.046   11.785    0.000    1.000    1.000
-    F3                0.531    0.057    9.360    0.000    1.000    1.000
+   .y1                0.421                               0.421    0.421
+   .y2                0.532                               0.532    0.532
+   .y3                0.505                               0.505    0.505
+   .y4                0.545                               0.545    0.545
+   .y5                0.558                               0.558    0.558
+   .y6                0.441                               0.441    0.441
+   .y7                0.330                               0.330    0.330
+   .y8                0.421                               0.421    0.421
+   .y9                0.327                               0.327    0.327
+   .y10               0.419                               0.419    0.419
+   .y11               0.448                               0.448    0.448
+   .y12               0.336                               0.336    0.336
+   .y13               0.724                               0.724    0.724
+   .y14               0.443                               0.443    0.443
+   .y15               0.476                               0.476    0.476
+    F1                0.579    0.054   10.634    0.000    1.000    1.000
+    F2                0.559    0.045   12.442    0.000    1.000    1.000
+    F3                0.552    0.052   10.573    0.000    1.000    1.000
 
 Scales y*:
                    Estimate  Std.Err  z-value  P(&gt;|z|)   Std.lv  Std.all
@@ -4676,7 +4684,7 @@ Scales y*:
 <span id="cb15-4"><a href="#cb15-4"></a>                       <span class="at">graph_options =</span> <span class="fu">list</span>(<span class="at">rankdir =</span> <span class="st">&quot;LR&quot;</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details><div class="cell-output-display">
 <div class="grViz html-widget html-fill-item" id="htmlwidget-cb8ac01c146216bbfbad" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-cb8ac01c146216bbfbad">{"x":{"diagram":" digraph plot { \n graph [ rankdir = LR ] \n node [ shape = box ] \n node [shape = box] \n y1; y2; y3; y4; y5; y6; y7; y8; y9; y10; y11; y12; y13; y14; y15 \n node [shape = oval] \n F1; F2; F3 \n \n edge [ color = black ] \n  F1->y1 [label = \"0.75\"] F1->y2 [label = \"0.7\"] F1->y3 [label = \"0.7\"] F1->y4 [label = \"0.66\"] F1->y5 [label = \"0.69\"] F2->y6 [label = \"0.74\"] F2->y7 [label = \"0.82\"] F2->y8 [label = \"0.76\"] F2->y9 [label = \"0.83\"] F2->y10 [label = \"0.77\"] F3->y11 [label = \"0.73\"] F3->y12 [label = \"0.81\"] F3->y13 [label = \"0.56\"] F3->y14 [label = \"0.73\"] F3->y15 [label = \"0.72\"] F2 -> F1 [label = \"0.66\", dir = \"both\"] F3 -> F1 [label = \"0.54\", dir = \"both\"] F3 -> F2 [label = \"0.47\", dir = \"both\"]\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<script type="application/json" data-for="htmlwidget-cb8ac01c146216bbfbad">{"x":{"diagram":" digraph plot { \n graph [ rankdir = LR ] \n node [ shape = box ] \n node [shape = box] \n y1; y2; y3; y4; y5; y6; y7; y8; y9; y10; y11; y12; y13; y14; y15 \n node [shape = oval] \n F1; F2; F3 \n \n edge [ color = black ] \n  F1->y1 [label = \"0.76\"] F1->y2 [label = \"0.68\"] F1->y3 [label = \"0.7\"] F1->y4 [label = \"0.67\"] F1->y5 [label = \"0.66\"] F2->y6 [label = \"0.75\"] F2->y7 [label = \"0.82\"] F2->y8 [label = \"0.76\"] F2->y9 [label = \"0.82\"] F2->y10 [label = \"0.76\"] F3->y11 [label = \"0.74\"] F3->y12 [label = \"0.82\"] F3->y13 [label = \"0.53\"] F3->y14 [label = \"0.75\"] F3->y15 [label = \"0.72\"] F2 -> F1 [label = \"0.66\", dir = \"both\"] F3 -> F1 [label = \"0.52\", dir = \"both\"] F3 -> F2 [label = \"0.59\", dir = \"both\"]\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </section><section id="exportar-datos" class="level1" data-number="4"><h1 data-number="4">
