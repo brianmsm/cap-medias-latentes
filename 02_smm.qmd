@@ -1,0 +1,171 @@
+---
+title: "Modelo de Medias Estructuradas (SMM)"
+author: "Brian Norman Peña-Calero"
+date: "`r Sys.Date()`"
+filters:
+  - docx-landscape.lua
+format: 
+  html:
+    toc: true
+    number-sections: true
+    anchor-sections: true
+    code-line-numbers: true
+    code-overflow: scroll
+    code-copy: hover
+    code-link: true
+    code-fold: show
+    lang: es
+    embed-resources: true
+  docx:
+    toc: true
+    number-sections: true
+    highlight-style: arrow
+    lang: es
+    table-of-contents: true
+knitr:
+  opts_chunk: 
+    warning: false
+editor_options: 
+  chunk_output_type: console
+---
+
+::: landscape
+
+# Carga de paquetes
+
+```{r}
+library(tidyverse)
+library(lavaan)
+library(semTools)
+```
+
+
+# Importar datos
+
+```{r}
+simData <- read_csv("https://raw.githubusercontent.com/brianmsm/cap-medias-latentes/main/01_data/processed/simData.csv")
+simData
+```
+
+# Establecer invarianza
+
+```{r}
+model_cfa <- "F1 =~ y1 + y2 + y3 + y4 + y5
+              F2 =~ y6 + y7 + y8 + y9 + y10
+              F3 =~ y11 + y12 + y13 + y14 + y15"
+```
+
+```{r R.options=list(width = 120)}
+test.seq <- c("thresholds","loadings","intercepts", "residuals")
+name.test.seq <- c("thresholds", "metric", "scalar", "strict")
+inv <- list()
+for (i in 0:length(test.seq)) {
+  if (i == 0L) {
+    meq.label <- "configural"
+    group.equal <- ""
+  } else {
+    meq.label <- name.test.seq[i]
+    group.equal <- test.seq[1:i]
+  }
+  inv[[meq.label]] <- measEq.syntax(configural.model = model_cfa,
+                                    data = simData,
+                                    ordered = TRUE,
+                                    estimator = "WLSMV",
+                                    parameterization = "theta",
+                                    ID.fac = "std.lv",
+                                    ID.cat = "Wu.Estabrook.2016",
+                                    group = "Sexo",
+                                    group.equal = group.equal,
+                                    return.fit = TRUE)
+}
+
+comparefit_inv <- compareFit(inv)
+summary(comparefit_inv)
+```
+
+# Liberación de carga
+
+```{r}
+antools::identify_items_partial(inv$`metric`,
+                                cutoff.value = 0.05)
+```
+
+```{r R.options=list(width = 120)}
+test.seq <- c("thresholds", "loadings", "intercepts", "residuals")
+name.test.seq <- c("thresholds", "metric", "scalar", "strict")
+inv2 <- list()
+
+for (i in 0:length(test.seq)) {
+    if (i == 0L) {
+        meq.label <- "configural"
+        group.equal <- ""
+        group.partial <- NULL
+    } else {
+        meq.label <- name.test.seq[i]
+        group.equal <- test.seq[1:i]
+        # Incluir group.partial solo si "metric" está en group.equal
+        if ("loadings" %in% group.equal) {
+            group.partial <- c("F3 =~ y13")
+        } else {
+            group.partial <- NULL
+        }
+    }
+    inv2[[meq.label]] <- measEq.syntax(configural.model = model_cfa,
+                                       data = simData,
+                                       ordered = TRUE,
+                                       estimator = "WLSMV",
+                                       parameterization = "theta",
+                                       ID.fac = "std.lv",
+                                       ID.cat = "Wu.Estabrook.2016",
+                                       group = "Sexo",
+                                       group.equal = group.equal,
+                                       group.partial = group.partial,
+                                       return.fit = TRUE)
+}
+
+comparefit_inv2 <- compareFit(inv2) 
+summary(comparefit_inv2)
+```
+
+# Comparación de grupos
+
+Establecer sintaxis:
+
+```{r}
+model_comp <- "# Modelo de Medición
+               F1 =~ y1 + y2 + y3 + y4 + y5
+               F2 =~ y6 + y7 + y8 + y9 + y10
+               F3 =~ y11 + y12 + y13 + y14 + y15
+
+               # Establecer las medias latentes
+               F1 ~ c(M_mf1, M_vf1)*1
+               F2 ~ c(M_mf2, M_vf2)*1
+               F3 ~ c(M_mf3, M_vf3)*1
+               M_mf1 == 0 # Fijar la media en 0
+               M_mf2 == 0 # Fijar la media en 0
+               M_mf3 == 0 # Fijar la media en 0
+               
+               # Calcular las diferencias
+               dif.v_m.f1 := M_vf1 - M_mf1
+               dif.v_m.f2 := M_vf2 - M_mf2
+               dif.v_m.f3 := M_vf3 - M_mf3"
+```
+
+```{r R.options=list(width = 120)}
+fit_comp <- cfa(model = model_comp,
+                data = simData,
+                estimator = "WLSMV",
+                ordered = TRUE,
+                group.equal = c("thresholds","loadings","intercepts"),
+                group = "Sexo",
+                std.lv = TRUE,
+                meanstructure = TRUE,
+                group.partial = "F3 =~ y13")
+
+summary(fit_comp, fit.measures = TRUE, standardized = TRUE)
+
+standardizedsolution(fit_comp) %>% 
+  filter(op == ":=")
+```
+
+:::
